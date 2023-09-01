@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  body {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    justify-content: flex-start;
+  }
+  body {
+  background-image: url('c:\Users\068405950\Downloads\efh.jpg'); /* Replace with your image's URL */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* Rest of your existing styles */
+}
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: rgb(53, 50, 50);
+    color: rgb(243, 38, 151);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .logo-container {
+    margin: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+  }
+
+  .logo {
+    max-width: 280px;
+    height: auto;
+    background-color: transparent;
+   
+  }
+
+  .centered-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -200px;
+    position: relative;
+  }
+
+  .row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 300px;
+
+  }
+  
+  .image {
+    width: 220px;
+    height: 300px;
+    border-radius: 10%;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s;
+    margin-bottom: 60px;
+  }
+
+  .image:hover {
+    transform: scale(1.2);
+  }
+
+  .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+   
+  }
+
+  .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.1s;
+  }
+
+  .image:hover .image-overlay {
+    opacity: 1;
+  }
+
+  .overlay-text {
+    color: rgb(250, 255, 255);
+    font-size: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    font-style: oblique;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .overlay-link {
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+    padding: 5px 15px;
+    background-color: rgba(255, 0, 0, 0.2);
+    border-radius: 30%;
+    transition: background-color 0.3s;
+  }
+
+  .overlay-link:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .image-description {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .visitor-count {
+    font-size: 18px;
+    margin-top: 20px;
+    position: relative;
+    top: 10px;
+    right: 20px;
+    background-color: rgb(227, 234, 233);
+    color: black;
+    padding: 8px 20px;
+    border-radius: 40px;
+    font-weight: bold;
+    transition: font-size 0.3s;
+    transform: translateX(-50%);
+    text-align: center;
+    
+  } 
+
+  .visitor-count:hover {
+    font-size: 16px; /* Larger font size on hover */
+  }
+  .image-text {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 1;
+    transition: opacity 0.3s;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: flex;
+    justify-content: center;
+}
+  .image:hover .image-text {
+    opacity: 0;
+  }
+  .image-text{
+   
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: rgb(24, 23, 23);
+    font-size: 20px;
+    text-align: center;
+    font-weight: bolder;
+    font-style: inherit;
+}
+.visitor-count.sticky {
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.visitor-count.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.announcement-box {
+  background-color: white;
+  color: palevioletred;
+  padding: 15px 25px;
+  text-align: center;
+  font-weight: bold;
+  width: 50%;
+  height: 600px;
+  top: 60px; /* Adjust this value based on your design */
+  z-index: 1; /* Ensure the box appears above other content */
+  border-radius: 20px;
+  margin-top: 100px;
+  max-width: 400px;
+  font-size: 24px;
+  
+
+}
+@keyframes dropAnimation {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+}
+ 
+  .image {
+    animation: dropAnimation 3s ease-out;
+  }
+  @media (max-width: 768px) {
+  /* CSS rules for screens up to 768px wide */
+}
+
+@media (max-width: 480px) {
+  /* CSS rules for screens up to 480px wide */
+}
+
+ 
+
+/* Adjust other styles as needed */
+
+</style>
+</head>
+<body>
+   
+  <div class="logo-container">
+    <img src="c:\Users\068405950\Documents\site\images\tal-omarha-low-resolution-logo-color-on-transparent-background.png" alt="Logo" class="logo">
+  </div>
+  <div class="visitor-count">
+    Total Visitors: <span id="visitor-count">568</span>
+  </div>
+  
+ 
+  
+  <div class="centered-container">
+    <div class="row">
+        <div class="image">
+            <img src="c:\Users\068405950\Documents\site\images\pp.jpg" alt="Image 1">
+            <div class="image-overlay">
+              <a class="overlay-link" href="">Enter</a>
+        </div>
+            
+            <p class="image-text">انجي خوري</p>
+          </div> 
+          <div class="image-text"> <div class="image-text-box"> </div>
+          </div>
+      <div class="image">
+        <img src="c:\Users\068405950\Documents\site\images\ll.jpg" alt="Image 2">
+        <div class="image-overlay">
+          <a class="overlay-link" href="https://example.com">Enter</a>
+        </div>
+        
+            
+            <p class="image-text">الشيخة السعودية</p>
+      </div>
+      <div class="image">
+        <img src="c:\Users\068405950\Documents\site\images\a.jpg" alt="Image 3">
+        <div class="image-overlay">
+          <a class="overlay-link" href="https://example.com">Enter</a>
+        </div>
+    
+           
+            <p class="image-text"> رهف القنون</p>
+      </div>
+      <div class="image">
+        <img src="c:\Users\068405950\Documents\site\images\b.jpg" alt="Image 4">
+        <div class="image-overlay">
+          <a class="overlay-link" href="https://example.com">Enter</a>
+        </div>
+        <img src="c:\Users\068405950\Downloads\small_image_1.jpg" alt="Small Image 1" class="small-image">
+            
+            <p class="image-text"> قمرهم</p>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 20px;">
+      <div class="image">
+        <img src="c:\Users\068405950\Documents\site\images\c.jpg" alt="Image 1">
+        <div class="image-overlay">
+          <a class="overlay-link" href="https://example.com">Enter</a>
+        </div>
+        <img src="c:\Users\068405950\Downloads\small_image_1.jpg" alt="Small Image 1" class="small-image">
+       
+            <p class="image-text">ميار</p>
+      </div>
+      <div class="image">
+        <img src="c:\Users\068405950\Documents\site\images\d.jpg" alt="Image 2">
+        <div class="image-overlay">
+          <a class="overlay-link" href="https://example.com">Enter</a>
+        </div>
+        <img src="c:\Users\068405950\Downloads\small_image_1.jpg" alt="Small Image 1" class="small-image">
+            
+            <p class="image-text"> ام شامبو</p>
+      </div>
+      <div class="image">
+        <img src="c:\Users\068405950\Documents\site\images\n.jpg" alt="Image 3">
+        <div class="image-overlay">
+          <a class="overlay-link" href="https://example.com">Enter</a>
+        </div>
+        <img src="c:\Users\068405950\Downloads\small_image_1.jpg" alt="Small Image 1" class="small-image">
+            
+            <p class="image-text"> اسيل المولعة</p>
+      </div>
+      <div class="image">
+        <img src="c:\Users\068405950\Documents\site\images\yy.jpg" alt="Image 4">
+        <div class="image-overlay">
+          <a class="overlay-link" href="https://example.com">Enter</a>
+        </div>
+        <img src="c:\Users\068405950\Downloads\small_image_1.jpg" alt="Small Image 1" class="small-image">
+            
+            <p class="image-text"> دلوعة الرياض</p>
+      </div>
+    
+      
+         
+            
+    </div>
+  </div>
+  <script>
+    // Function to update visitor count
+    function updateVisitorCount() {
+      const visitorCountElement = document.getElementById("visitor-count");
+      let visitorCount = parseInt(localStorage.getItem("visitorCount")) || 568; // Default starting count
+      visitorCount += 1; // Increase count by 1 every 30 seconds (adjust as needed)
+      localStorage.setItem("visitorCount", visitorCount); // Store the updated count in local storage
+      visitorCountElement.textContent = visitorCount;
+    }
+
+    // Update count initially
+    updateVisitorCount();
+
+    // Update count every 30 seconds
+    setInterval(updateVisitorCount, 30 * 1000); // 30 seconds in milliseconds
+    // Function to handle scroll and update sticky behavior
+    function handleScroll() {
+      const visitorCountElement = document.querySelector(".visitor-count");
+      const centeredContainer = document.querySelector(".centered-container");
+      const announcementBox = document.querySelector(".announcement-box");
+      
+      const scrollPosition = window.scrollY;
+      const containerTop = centeredContainer.offsetTop;
+      const boxHeight = announcementBox.offsetHeight;
+      
+      if (scrollPosition > containerTop) {
+        visitorCountElement.classList.add("sticky");
+      } else {
+        visitorCountElement.classList.remove("sticky");
+      }
+      
+      if (scrollPosition > containerTop - boxHeight) {
+        announcementBox.style.top = "0"; // Stick announcement box
+      } else {
+        announcementBox.style.top = "200px"; // Reset announcement box position
+      }
+    }
+
+    // Update count initially
+    updateVisitorCount();
+
+    // Update count every 30 seconds
+    setInterval(updateVisitorCount, 30 * 1000);
+
+    // Add event listener to scroll
+    window.addEventListener("scroll", handleScroll);
+    
+    
+  
+  </script>
+   
+  </script>
+
+
+
+
+
+
+
+    
+
+   
+
+  </script>
+ 
+  
+
+ 
+
+
+
+  
+
+  </script>
+  <script>
+  
+
+
+    
+  </script>
+</body>
+</html>
